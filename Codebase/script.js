@@ -9,7 +9,8 @@ function posHandler(position) {
   homepage.innerHTML = "Your Latitude: " + latitude + "<br>"; 
   homepage.innerHTML += "Your Longitude: " + longitude + "<br>";
   // displays the fetched location (a check for the API)
-
+  // the homepage element here is referenced from the html document in the same directory - from line number 10
+  
   // filter based on two coordinates system, flawed as the alignment of the room 
   //may not always lie within the rectangles described by two coordintes (skewed geometry)
   //needs revision to implement the correct function, described in the midterm project progress report 
