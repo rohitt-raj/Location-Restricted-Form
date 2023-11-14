@@ -1,0 +1,55 @@
+<!-- Frontend shown to professor -->
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormCreatorPage</title>
+</head>
+
+<script>
+
+    function parsedData(data){
+        var divArea = document.getElementById("mainArea");
+        divArea.innerHTML = data.forProf;
+    }
+
+    function middleMen(resp){
+        resp.json().then(parsedData);
+    }
+
+    // function onPress(){
+    //     const formId = document.getElementById("formIdBox").value;
+    //     fetch(`http://localhost:3001/auth/google?formId=${formId}`, {
+    //         method: "GET",
+    //     }).then(middleMen);
+    // }
+
+    async function onPress() {
+        const formId = document.getElementById("formIdBox").value; // get the Form ID entered by Prof
+        const response = await fetch(`http://localhost:3001/auth/google?formId=${formId}`, {
+            method: "GET",
+        });
+        
+        if (response.status === 200) {
+            // Redirect to the response URL received from the server
+            window.location.href = response.url;
+        } else {
+            // in case of any errors
+            const data = await response.json();
+            console.error('Error:', data.error);
+        }
+    }
+</script>
+
+<body>
+    <h3>Enter form ID</h3>
+    <br>
+    <input type="text" id="formIdBox"></input>
+    <br><br>
+    <button onclick="onPress()">send todo</button>
+    <br><br>
+    <div id="mainArea"></div>
+</body>
+</html>
