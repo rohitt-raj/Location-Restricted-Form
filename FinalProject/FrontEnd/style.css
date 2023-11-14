@@ -1,0 +1,86 @@
+/* Style for the container holding the form
+#formContainer {
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  Style for each question
+  div > p {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  Style for radio buttons and their labels
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  Style for the submit button
+  #submitButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  #submitButton:hover {
+    background-color: #45a049;
+  }
+   */
+
+/* Style for the container holding the form */
+#formContainer {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 600px; /* Adjust the width as needed */
+    /* text-align: center; */
+  }
+  
+  /* Style for each question */
+  div > p {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Style for radio buttons and their labels */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the individual question boxes */
+  div > div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+  
+  /* Style for the submit button */
+  #submitButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    
+  }
+  
+  #submitButton:hover {
+    background-color: #45a049;
+  }
+  
