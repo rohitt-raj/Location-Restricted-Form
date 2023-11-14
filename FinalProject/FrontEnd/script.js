@@ -7,116 +7,132 @@
 
 // JSON structure representing the quiz
 // Replace this placeholder object with your actual JSON data
-const quizData = {
-    "formId": "FORM_ID",
-    "info": {
-      "title": "Famous Black Women",
-      "description": "Please complete this quiz based off of this week's readings for class.",
-      "documentTitle": "API Example Quiz"
-    },
-    "settings": {
-      "quizSettings": {
-        "isQuiz": true
-      }
-    },
-    "revisionId": "00000021",
-    "responderUri": "https://docs.google.com/forms/d/e/1FAIpQLSd0iBLPh4suZoGW938EU1WIxzObQv_jXto0nT2U8HH2KsI5dg/viewform",
-    "items": [
-      {
-        "itemId": "5d9f9786",
-        "imageItem": {
-          "image": {
-            "contentUri": "DIRECT_URL",
-            "properties": {
-              "alignment": "LEFT"
-            }
-          }
-        }
-      },
-      {
-        "itemId": "72b30353",
-        "title": "Which African American woman authored \"I Know Why the Caged Bird Sings\"?",
-        "questionItem": {
-          "question": {
-            "questionId": "25405d4e",
-            "required": true,
-            "grading": {
-              "pointValue": 2,
-              "correctAnswers": {
-                "answers": [
-                  {
-                    "value": "Maya Angelou"
-                  }
-                ]
-              }
-            },
-            "choiceQuestion": {
-              "type": "RADIO",
-              "options": [
-                {
-                  "value": "Maya Angelou"
-                },
-                {
-                  "value": "bell hooks"
-                },
-                {
-                  "value": "Alice Walker"
-                },
-                {
-                  "value": "Roxane Gay"
-                }
-              ]
-            }
-          }
-        }
-      },
-      {
-        "itemId": "0a4859c8",
-        "title": "Who was the first Dominican-American woman elected to state office?",
-        "questionItem": {
-          "question": {
-            "questionId": "37fff47a",
-            "grading": {
-              "pointValue": 2,
-              "correctAnswers": {
-                "answers": [
-                  {
-                    "value": "Grace Diaz"
-                  }
-                ]
-              }
-            },
-            "choiceQuestion": {
-              "type": "RADIO",
-              "options": [
-                {
-                  "value": "Rosa Clemente"
-                },
-                {
-                  "value": "Grace Diaz"
-                },
-                {
-                  "value": "Juana Matias"
-                },
-                {
-                  "value": "Sabrina Matos"
-                }
-              ]
-            }
-          }
-        }
-      }
-    ]
-  };
-  
-  // ... rest of the JavaScript code remains unchanged
-  
-  
-  // Function to generate the quiz form
+
+
+// const quizData = {
+//     "formId": "FORM_ID",
+//     "info": {
+//       "title": "Famous Black Women",
+//       "description": "Please complete this quiz based off of this week's readings for class.",
+//       "documentTitle": "API Example Quiz"
+//     },
+//     "settings": {
+//       "quizSettings": {
+//         "isQuiz": true
+//       }
+//     },
+//     "revisionId": "00000021",
+//     "responderUri": "https://docs.google.com/forms/d/e/1FAIpQLSd0iBLPh4suZoGW938EU1WIxzObQv_jXto0nT2U8HH2KsI5dg/viewform",
+//     "items": [
+//       {
+//         "itemId": "5d9f9786",
+//         "imageItem": {
+//           "image": {
+//             "contentUri": "DIRECT_URL",
+//             "properties": {
+//               "alignment": "LEFT"
+//             }
+//           }
+//         }
+//       },
+//       {
+//         "itemId": "72b30353",
+//         "title": "Which African American woman authored \"I Know Why the Caged Bird Sings\"?",
+//         "questionItem": {
+//           "question": {
+//             "questionId": "25405d4e",
+//             "required": true,
+//             "grading": {
+//               "pointValue": 2,
+//               "correctAnswers": {
+//                 "answers": [
+//                   {
+//                     "value": "Maya Angelou"
+//                   }
+//                 ]
+//               }
+//             },
+//             "choiceQuestion": {
+//               "type": "RADIO",
+//               "options": [
+//                 {
+//                   "value": "Maya Angelou"
+//                 },
+//                 {
+//                   "value": "bell hooks"
+//                 },
+//                 {
+//                   "value": "Alice Walker"
+//                 },
+//                 {
+//                   "value": "Roxane Gay"
+//                 }
+//               ]
+//             }
+//           }
+//         }
+//       },
+//       {
+//         "itemId": "0a4859c8",
+//         "title": "Who was the first Dominican-American woman elected to state office?",
+//         "questionItem": {
+//           "question": {
+//             "questionId": "37fff47a",
+//             "grading": {
+//               "pointValue": 2,
+//               "correctAnswers": {
+//                 "answers": [
+//                   {
+//                     "value": "Grace Diaz"
+//                   }
+//                 ]
+//               }
+//             },
+//             "choiceQuestion": {
+//               "type": "RADIO",
+//               "options": [
+//                 {
+//                   "value": "Rosa Clemente"
+//                 },
+//                 {
+//                   "value": "Grace Diaz"
+//                 },
+//                 {
+//                   "value": "Juana Matias"
+//                 },
+//                 {
+//                   "value": "Sabrina Matos"
+//                 }
+//               ]
+//             }
+//           }
+//         }
+//       }
+//     ]
+//   };
+
+// Define the variable to hold the quiz data
+let quizData = {}; // Initialize as empty object
+
+// Function to fetch custom JSON data
+function loadCustomJSON() {
+  fetch('./example.json')
+    .then(response => response.json())
+    .then(data => {
+      // Assign the fetched JSON data to the quizData variable
+      quizData = data;
+      console.log(quizData); // Display the data for demonstration
+      generateQuizForm();
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
+// Call the function to load the custom JSON data
+loadCustomJSON();
+
+
 // Function to generate the quiz form
 function generateQuizForm() {
     const formContainer = document.getElementById('formContainer');
-  
     quizData.items.forEach(item => {
       const questionContainer = document.createElement('div');
   
