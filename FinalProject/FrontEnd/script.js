@@ -185,86 +185,164 @@
 //     submitButton.addEventListener('click', submitQuiz);
 //   };
   
-const fs = require('fs');
+// const fs = require('fs');
 
-// Read the JSON file
-fs.readFile('../Backend/for-student/formData.json', 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading file:', err);
-    return;
-  }
+fetch('FinalProject/Backend/for-student/formData.json').then(response => response.json).then(data =>
+    {
+      const jsonData = JSON.parse(data);
 
-  try {
-    // Parse the JSON data
-    const jsonData = JSON.parse(data);
-
-    // Function to generate HTML for different question types...
-    function generateHTMLForQuestion(question) {
-      let html = '';
-      switch (question.type) {
-        case 'RADIO':
-          html += `<div>${question.title}</div>`;
-          question.options.forEach(option => {
-            html += `
-              <label>
-                <input type="radio" name="${question.questionId}" value="${option.value}">
-                ${option.value}
-              </label><br>
-            `;
-          });
-          break;
-        case 'CHECKBOX':
-          html += `<div>${question.title}</div>`;
-          question.options.forEach(option => {
-            html += `
-              <label>
-                <input type="checkbox" name="${question.questionId}" value="${option.value}">
-                ${option.value}
-              </label><br>
-            `;
-          });
-          break;
-        case 'DROP_DOWN':
-          html += `<div>${question.title}</div>`;
-          html += `<select name="${question.questionId}">`;
-          question.options.forEach(option => {
-            html += `<option value="${option.value}">${option.value}</option>`;
-          });
-          html += `</select>`;
-          break;
-        // Add more cases for other question types if needed
-        default:
-          html += `<div>${question.title}</div>`;
-          html += `<p>Question type not supported</p>`;
-          break;
-      }
-      return html;
-    }
-
-    // Function to generate HTML from JSON...
-    function generateHTMLFromJSON(data) {
-      let html = '';
-      data.items.forEach(item => {
-        if (item.questionItem && item.questionItem.question) {
-          const question = item.questionItem.question;
-          if (question.choiceQuestion) {
-            html += generateHTMLForQuestion(question.choiceQuestion);
-          } else if (question.textQuestion) {
+      // Function to generate HTML for different question types...
+      function generateHTMLForQuestion(question) {
+        let html = '';
+        switch (question.type) {
+          case 'RADIO':
             html += `<div>${question.title}</div>`;
-            html += `<textarea></textarea>`;
-          }
-          // Add more conditions for other question types if needed
+            question.options.forEach(option => {
+              html += `
+                <label>
+                  <input type="radio" name="${question.questionId}" value="${option.value}">
+                  ${option.value}
+                </label><br>
+              `;
+            });
+            break;
+          case 'CHECKBOX':
+            html += `<div>${question.title}</div>`;
+            question.options.forEach(option => {
+              html += `
+                <label>
+                  <input type="checkbox" name="${question.questionId}" value="${option.value}">
+                  ${option.value}
+                </label><br>
+              `;
+            });
+            break;
+          case 'DROP_DOWN':
+            html += `<div>${question.title}</div>`;
+            html += `<select name="${question.questionId}">`;
+            question.options.forEach(option => {
+              html += `<option value="${option.value}">${option.value}</option>`;
+            });
+            html += `</select>`;
+            break;
+          // Add more cases for other question types if needed
+          default:
+            html += `<div>${question.title}</div>`;
+            html += `<p>Question type not supported</p>`;
+            break;
         }
-      });
-      return html;
+        return html;
+      }
+  
+      // Function to generate HTML from JSON...
+      function generateHTMLFromJSON(data) {
+        let html = '';
+        data.items.forEach(item => {
+          if (item.questionItem && item.questionItem.question) {
+            const question = item.questionItem.question;
+            if (question.choiceQuestion) {
+              html += generateHTMLForQuestion(question.choiceQuestion);
+            } else if (question.textQuestion) {
+              html += `<div>${question.title}</div>`;
+              html += `<textarea></textarea>`;
+            }
+            // Add more conditions for other question types if needed
+          }
+        });
+        return html;
+      }
+  
+      // Get the container where you want to append the generated HTML
+      const container = document.getElementById('your-container-id'); // Replace with your container ID
+  
+      // Generate HTML and append to the container
+      container.innerHTML = generateHTMLFromJSON(jsonData);
+
     }
+    )
+    .catch(error =>console.error('Error fetching the JSON from the .json file, sorry, try again :( ', error));
 
-    // Get the container where you want to append the generated HTML
-    const container = document.getElementById('your-container-id'); // Replace with your container ID
 
-    // Generate HTML and append to the container
-    container.innerHTML = generateHTMLFromJSON(jsonData);
-  } catch (error) {
-    console.error('Error parsing JSON:', error);
-  }
-});
+
+
+// // Read the JSON file
+// fs.readFile('../Backend/for-student/formData.json', 'utf8', (err, data) => {
+//   if (err) {
+//     console.error('Error reading file:', err);
+//     return;
+//   }
+//   try {
+//     // Parse the JSON data
+//     const jsonData = JSON.parse(data);
+
+//     // Function to generate HTML for different question types...
+//     function generateHTMLForQuestion(question) {
+//       let html = '';
+//       switch (question.type) {
+//         case 'RADIO':
+//           html += `<div>${question.title}</div>`;
+//           question.options.forEach(option => {
+//             html += `
+//               <label>
+//                 <input type="radio" name="${question.questionId}" value="${option.value}">
+//                 ${option.value}
+//               </label><br>
+//             `;
+//           });
+//           break;
+//         case 'CHECKBOX':
+//           html += `<div>${question.title}</div>`;
+//           question.options.forEach(option => {
+//             html += `
+//               <label>
+//                 <input type="checkbox" name="${question.questionId}" value="${option.value}">
+//                 ${option.value}
+//               </label><br>
+//             `;
+//           });
+//           break;
+//         case 'DROP_DOWN':
+//           html += `<div>${question.title}</div>`;
+//           html += `<select name="${question.questionId}">`;
+//           question.options.forEach(option => {
+//             html += `<option value="${option.value}">${option.value}</option>`;
+//           });
+//           html += `</select>`;
+//           break;
+//         // Add more cases for other question types if needed
+//         default:
+//           html += `<div>${question.title}</div>`;
+//           html += `<p>Question type not supported</p>`;
+//           break;
+//       }
+//       return html;
+//     }
+
+//     // Function to generate HTML from JSON...
+//     function generateHTMLFromJSON(data) {
+//       let html = '';
+//       data.items.forEach(item => {
+//         if (item.questionItem && item.questionItem.question) {
+//           const question = item.questionItem.question;
+//           if (question.choiceQuestion) {
+//             html += generateHTMLForQuestion(question.choiceQuestion);
+//           } else if (question.textQuestion) {
+//             html += `<div>${question.title}</div>`;
+//             html += `<textarea></textarea>`;
+//           }
+//           // Add more conditions for other question types if needed
+//         }
+//       });
+//       return html;
+//     }
+
+//     // Get the container where you want to append the generated HTML
+//     const container = document.getElementById('your-container-id'); // Replace with your container ID
+
+//     // Generate HTML and append to the container
+//     container.innerHTML = generateHTMLFromJSON(jsonData);
+    
+//   } catch (error) {
+//     console.error('Error parsing JSON:', error);
+//   }
+// });
