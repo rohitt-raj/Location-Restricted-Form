@@ -187,7 +187,7 @@
   
 // const fs = require('fs');
 
-fetch('FinalProject/Backend/for-student/formData.json').then(response => response.json).then(data =>
+fetch('./formData.json').then(response => response.json).then(data =>
     {
       const jsonData = JSON.parse(data);
 
