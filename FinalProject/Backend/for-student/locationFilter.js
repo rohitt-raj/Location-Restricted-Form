@@ -30,7 +30,7 @@ function twoPointDistance(coord1, coord2){
                   + Math.sin(distanceLongitude/2)*Math.sin(distanceLongitude/2);
     //the above derives from a formula to get the correct distance between any two points on the earths surface.
     currAns = 2 * Math.asin(Math.sqrt(currAns));
-    let radiusOfEarth = 6371*1000; //in metres
+    let radiusOfEarth = 6371; //in metres
     return currAns*currAns;
     //the final distance in metres is returned
 }
@@ -57,6 +57,11 @@ function isInside(roomCoord1, roomCoord2, roomCoord3, roomCoord4, myCoords){
     // let B = [23.212907, 72.684584];
     // let C = [23.213565, 72.685307];
     // let D = [23.214002, 72.684747];
+
+    //let A = []
+    //
+    // 
+    //
 
     let A, B, C, cosA, cosB, cosC = triangle(roomCoord1, roomCoord2, myCoords);
     let AM_AB = C*B*cosA;
