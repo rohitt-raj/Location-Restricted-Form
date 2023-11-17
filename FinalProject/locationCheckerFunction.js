@@ -58,6 +58,12 @@ function isInside(roomCoord1, roomCoord2, roomCoord3, roomCoord4, myCoords){
     // let C = [23.213565, 72.685307];
     // let D = [23.214002, 72.684747];
 
+    // kyzeel coords
+    let roomCoord1 = [23.209585, 72.685273];
+    let roomCoord2 = [23.208762, 72.685335];
+    let roomCoord3 = [23.208751, 72.685935];
+    let roomCoord4 = [23.209621, 72.685908];
+    
     let A, B, C, cosA, cosB, cosC = triangle(roomCoord1, roomCoord2, myCoords);
     let AM_AB = C*B*cosA;
     let AB = C*C;
