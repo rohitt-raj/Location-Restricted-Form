@@ -17,6 +17,7 @@ function twoPointDistance(coord1, coord2){
     let nCoord2 = [0, 0];
     nCoord1[0] = toRadians(coord1[0]);
     nCoord1[1] = toRadians(coord1[1]);
+
     nCoord2[0] = toRadians(coord2[0]);
     nCoord2[1] = toRadians(coord2[1]);
 
@@ -25,7 +26,7 @@ function twoPointDistance(coord1, coord2){
     let distanceLongitude = Math.abs(nCoord2[1] - nCoord1[1]);
     //longitudinal distance
 
-    let currAns = Math.sin(distanceLongitude/2)*Math.sin(distanceLongitude/2) + 
+    let currAns = Math.sin(distanceLatitude/2)*Math.sin(distanceLatitude/2) + 
                   + Math.cos(nCoord1[0])*Math.cos(nCoord2[0]) 
                   + Math.sin(distanceLongitude/2)*Math.sin(distanceLongitude/2);
     //the above derives from a formula to get the correct distance between any two points on the earths surface.
