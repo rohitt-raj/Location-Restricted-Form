@@ -72,9 +72,8 @@ function isInside(roomCoord1, roomCoord2, roomCoord3, roomCoord4, myCoords){
     return 0;
 }
 
-
+// =============================== HANDLES THE FETCHED LOCATION OF STUDENT
 navigator.geolocation.getCurrentPosition(posHandler, errHandler); 
-
 // when position fetched without errors
 function posHandler(position) {
     const { latitude, longitude } = position.coords; // fetches the latitude and longitude
