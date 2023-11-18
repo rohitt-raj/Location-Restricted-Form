@@ -98,8 +98,8 @@ function posHandler(position) {
     let roomCoord4 = [23.209621, 72.685908];
 
     if(isInside(roomCoord1, roomCoord2, roomCoord3, roomCoord4, myCoords)){
-        // window.location.href = "formInterface.html"; // redirect to the form's location
-        window.location.href = "formData.json"; // redirect to the form's location
+        window.location.href = "../FrontEnd/index.html"; // redirect to the form's location
+        // window.location.href = "formData.json"; // redirect to the form's location
 
     }
     else{ 
