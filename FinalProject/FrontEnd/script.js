@@ -187,9 +187,9 @@
   
 // const fs = require('fs');
 
-fetch('./formData.json').then(response => response.json()).then(data =>
+fetch('./formData.json').then(response => response.json()).then(jsonData =>
     {
-      const jsonData = JSON.parse(data);
+      //const jsonData = JSON.parse(data);
 
       // Function to generate HTML for different question types...
       function generateHTMLForQuestion(question) {
