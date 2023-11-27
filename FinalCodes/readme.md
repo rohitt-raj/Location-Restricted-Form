@@ -1,3 +1,7 @@
+Final codes are in the "Final Project" folder.
+
+This folder has our old codes.
+
 ## How to run the codes
 
 1. Save all the codes locally and open the files on VS Code
